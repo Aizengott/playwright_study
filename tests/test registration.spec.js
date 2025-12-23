@@ -6,9 +6,9 @@ const USER_NAME = faker.internet.username();
 const PASSWORD = "Pss!";
 const EMAIL = faker.internet.email({provider: 'example.com'});
 
+test.describe('tests registration and authorization', ()=> { 
 
-
-test('test registration', async ({ page }) => {
+test('registration', async ({ page }) => {
   await page.goto(REG_URL);
   await page.getByRole('link', { name: 'Sign up' }).click();
   await expect(page.getByRole('heading', { name: 'Sign up' })).toBeVisible();
@@ -21,3 +21,6 @@ test('test registration', async ({ page }) => {
   await page.getByRole('button', { name: 'Sign up' }).click();
   await expect(page.getByRole('navigation')).toContainText(USER_NAME);
 });
+/*test('authorization', async ({ page }) => {
+})*/
+})
