@@ -13,7 +13,7 @@ export class UserData{
         return this;
     }
     addPassword(){
-        this.data.password = "Pss!";
+        this.data.password = "Pss!!!";
         return this;
     }
     generate(){

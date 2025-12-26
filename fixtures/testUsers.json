@@ -1,0 +1,17 @@
+{
+    "valid": { 
+    "userName": "Lance63",
+    "email": "Josianne70@example.com",
+    "password": "Pss!!!"
+},
+    "invalidPassword": { 
+    "userName": "Lance63",
+    "email": "Josianne70@example.com",
+    "password": "aaaaa"
+},
+    "invalidEmail": { 
+    "userName": "Peter",
+    "email": "PeterOnTheMoon@example.com",
+    "password": "blop-blop"
+}
+}
