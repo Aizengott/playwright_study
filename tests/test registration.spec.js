@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { UserData } from './src/userData';
-//import { faker } from '@faker-js/faker';
+import { UserData } from '../src/userData';
+
 
 const REG_URL = 'https://realworld.qa.guru/';
 
