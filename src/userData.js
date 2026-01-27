@@ -24,6 +24,7 @@ export class UserData{
     }
 };
 //проверка
-
+/*
 const user = new UserData().generate();
 console.log(user)
+*/
