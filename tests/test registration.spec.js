@@ -9,6 +9,7 @@ test('registration', async ({ page }) => {
   const regAndAuth = new RegAndAuth(page);
   await regAndAuth.openPage();
   await regAndAuth.registration();
+  await regAndAuth.checkAuth("new")
 });
 
 test('authorization with correct password', async ({ page }) => {
@@ -33,7 +34,13 @@ test('authorization with unsighned email', async ({ page }) => {
   await regAndAuth.openPage();
   await regAndAuth.auth("randomEmail");
   await regAndAuth.checkAuth("randomEmail");
- 
+ });
 
-});
+test('user can change the password', async ({ page }) => {
+  const regAndAuth = new RegAndAuth(page);
+  await regAndAuth.openPage();
+  await regAndAuth.registration();
+  await regAndAuth.changePassAndAuth();
+ 
+}); 
 });
