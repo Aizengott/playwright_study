@@ -74,41 +74,15 @@ export class RegAndAuth {
         await this.passwordField.fill(user.password);
         await this.loginButton.click();
         this.currentEmail = user.email; //сохраняем почту авторизованного пользователя
-        this.currentName = user.name; //сохраняем имя авторизованного пользователя
+        this.currentName = user.userName; //сохраняем имя авторизованного пользователя
+        //console.log(`Сохранили имя пользователя ${this.currentName}`)
     }
    
-    async checkAuth(accountName){ 
-        //проверка имени авторизованного пользователя
-        
-        let user;
-        console.log(`проверка авторизации пользователя ${accountName}`)
-        if (accountName === "valid")
-            {user = users.valid
-            await expect(this.authName).toBeVisible();
-            await expect(this.authName).toHaveText(user.userName);
-            }
-        else if (accountName === "invalidPassword")
-            {
-            //user = users.invalidPassword;
-            await expect(this.errorMessage).toBeVisible();
-            await expect(this.errorMessage).toHaveText('Wrong email/password combination');
-            }
-        else if(accountName === "randomEmail")
-            {
-            //user = new UserData().generate();   
-            await expect(this.errorMessage).toBeVisible();
-            await expect(this.errorMessage).toHaveText('Email not found sign in first')
-            }
-        else if(accountName === "new")
-            {
-            await expect(this.authName).toBeVisible();
-            await expect(this.authName).toHaveText(this.currentName)
-            }
-    }
     async changePassAndAuth(){
-        //из авторизованного состояния меняем пароль и проверяем, что можем авторизоваться с новым паролем
-        console.log(`авторизован пользователь ${this.currentEmail}`)
+        //из авторизованного состояния меняем пароль и авторизуемся с новым паролем
+        //console.log(`авторизован пользователь ${this.currentEmail}`)
         const newPass = "newPassword"
+
         await this.authName.click();
         await expect(this.settingsLink).toBeVisible(); 
         await this.settingsLink.click();
@@ -128,10 +102,8 @@ export class RegAndAuth {
         await this.emailField.click();
         await this.emailField.fill(this.currentEmail);
         await this.passwordField.click();
-        await this.passwordField.fill(newPass);
+        await this.passwordField.fill(`${newPass}`);
         await this.loginButton.click();
-        //проверяем, что залогинились под старым именем
-        await expect(this.authName).toBeVisible();
-        await expect(this.authName).toHaveText(this.currentName)
+        
     }
 };

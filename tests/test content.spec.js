@@ -3,6 +3,7 @@ import { test, expect } from '@playwright/test';
 import { RegAndAuth } from '../src/pages/regAndAuth';
 import { Content } from '../src/pages/articlesAndComments';
 
+
 test.describe('tests adding content', ()=>{
     let context;
 
@@ -18,6 +19,9 @@ test.describe('tests adding content', ()=>{
         console.log('тест - пользователь может добавить статью');
         const content = new Content(page);
         await content.addArticle();
+        //проверяем, что видна кнопка "добавить комментарий" и тело статьи соответствует исходному
+        await expect(content.addCommentButton).toBeVisible();
+        await expect(content.publishedArticleBody).toContainText(content.body);
 
     });
 
@@ -25,5 +29,7 @@ test.describe('tests adding content', ()=>{
         console.log('тест - пользователь может добавить комментарий к статье');
         const content = new Content(page);
         await content.addComment();
+        await expect(content.publishedComment).toBeVisible();
+        await expect(content.publishedComment).toContainText(content.comment);
     });
 });

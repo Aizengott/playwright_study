@@ -32,7 +32,7 @@ export class Content {
     };
     
     async addArticle(){
-        //добавляет статью и проверяет ее наличие после публикации
+        //добавляет статью 
         await this.addArticleLink.click();
         await expect(this.articleTitleTextbox).toBeVisible();
         await this.articleTitleTextbox.click();
@@ -45,13 +45,11 @@ export class Content {
         //await this.articleTagTextbox.click();
         //await this.articleTagTextbox.fill('реклама');
         await this.publishArticleButton.click();
-        //проверяем, что видна кнопка "добавить комментарий" и тело статьи соответствует исходному
-        await expect(this.addCommentButton).toBeVisible();
-        await expect(this.publishedArticleBody).toContainText(this.body);
+       
     };
 
     async addComment(){
-        //добавляет комментарий к последней статье на сайте и проверяет, что он добавился
+        //добавляет комментарий к последней статье на сайте
         await expect(this.globalFeedButton).toBeVisible();
         await this.globalFeedButton.click();
         await expect(this.publishedArticleTitle).toBeVisible();
@@ -60,7 +58,6 @@ export class Content {
         await this.commentTextarea.click();
         await this.commentTextarea.fill(this.comment)
         await this.postCommentButton.click();
-        await expect(this.publishedComment).toBeVisible();
-        await expect(this.publishedComment).toContainText(this.comment);
+        
     }
 }    
