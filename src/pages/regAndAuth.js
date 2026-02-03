@@ -24,6 +24,7 @@ export class RegAndAuth {
         this.errorMessage = page.locator('.error-messages li'); // ошибка, если есть
         this.authName = page.locator('.dropdown-toggle.cursor-pointer'); //отображение имени пользователя на странице после успешной авторизации
 
+        this.globalFeedButton = page.getByRole('button', { name: 'Global Feed' }); //кнопка перехода к статьям
         this.currentEmail = null; //почта авторизованного пользователя
         this.currentName = null; //имя авторизованного пользователя
     };

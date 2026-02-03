@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test"  : "npx playwright test",
-    "ui"  : "npx playwright test --ui"
+    "test": "npx playwright test",
+    "test-ui": "npx playwright test --ui",
+    "reportallure": "npx allure serve ./allure-results ",
+    "clear": "rimraf allure-results allure-report"
   },
   "keywords": [],
   "author": "",
@@ -12,10 +14,13 @@
   "description": "",
   "devDependencies": {
     "@playwright/test": "^1.56.1",
-    "@types/node": "^24.9.1"
+    "@types/node": "^24.9.1",
+    "rimraf": "^6.1.2"
   },
   "dependencies": {
     "@faker-js/faker": "^10.1.0",
+    "allure": "^3.1.0",
+    "allure-playwright": "^3.4.5",
     "faker-js": "^1.0.0"
   }
 }
